@@ -63,10 +63,7 @@ def create_event():
 
 
     # Return response
-    return jsonify({
-        "message": "Event created successfully",
-        "event": new_event.to_dict()
-    }), 201
+    return jsonify(new_event.to_dict()), 201
 
 
 
@@ -101,10 +98,7 @@ def update_event(event_id):
     event.title = data["title"]
 
 
-    return jsonify({
-        "message": "Event updated successfully",
-        "event": event.to_dict()
-    }), 200
+    return jsonify(event.to_dict()), 200
 
 
 
@@ -126,6 +120,6 @@ def delete_event(event_id):
     events.remove(event)
     return jsonify({
         "message": "Event deleted successfully"
-    }), 200
+    }), 204
 if __name__ == "__main__":
     app.run(debug=True, port=5555)
